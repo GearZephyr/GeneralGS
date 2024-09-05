@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { _1, _2, _3 } from './index.js'; // Import your arrays here
+import { _1, _2, _3 ,_4,_5} from './index.js'; // Import your arrays here
 import './App.css';
 
 // Map pnumber values to the corresponding arrays
