@@ -8,7 +8,8 @@ const data = {
   1: _1,
   2: _2,
   3: _3,
-  // Add more as needed
+  4:_4,
+  5:_5
 };
 
 const App = () => {
