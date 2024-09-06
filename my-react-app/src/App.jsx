@@ -1,15 +1,32 @@
 
 import React, { useState, useEffect } from 'react';
-import { _1, _2, _3 ,_4,_5} from './index.js'; // Import your arrays here
+import { _1, _2, _3 ,_4,_5,_11, _12, _13 ,_14,_15,_6,_7,_8,_9,_10,_16,_17,_18,_19,_20
+} from './index.js'; // Import your arrays here
 import './App.css';
 
 // Map pnumber values to the corresponding arrays
 const data = {
   1: _1,
-  2: _2,
-  3: _3,
-  4:_4,
-  5:_5
+2: _2,
+3: _3,
+4: _4,
+5: _5,
+6: _6,
+7: _7,
+8: _8,
+9: _9,
+10: _10,
+11: _11,
+12: _12,
+13: _13,
+14: _14,
+15: _15,
+16: _16,
+17: _17,
+18: _18,
+19: _19,
+20: _20
+
 };
 
 const App = () => {
