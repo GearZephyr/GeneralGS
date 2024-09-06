@@ -1656,7 +1656,7 @@ export const _17 = [
 ];
 
 
-const _19 = [
+export const _19 = [
   "The Baisakhi festival in India marks the birth of Khalsa Panth under .- Guru Gobind Singh (10th Sikh Guru).",
   "A festival in Varanasi, 15 days after Diwali on the ghats of River Ganga is known as .- Dev Deepawali.",
   "Sarhul is a tribal festival celebrated in .- Jharkhand.",
