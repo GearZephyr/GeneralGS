@@ -80,25 +80,19 @@ h3 {
     flex-direction: column; /* Stack elements vertically */
     padding: 15px; /* Add extra padding for touch devices */
   }
-}
 
-/* Responsive container for mobile */
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 600px) {
   .container {
-      flex-direction: column; /* Stack elements vertically */
-      justify-content: center; /* Center the elements */
-      padding: 10px;
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    justify-content: center; /* Center the elements */
+    padding: 10px;
   }
 
   .btn {
-      margin: 10px 0; /* Reduce margin for mobile */
+    margin: 10px 0; /* Reduce margin for mobile */
+  }
+
+  h6 {
+    font-size: 14px; /* Adjust heading size for smaller screens */
   }
 }
 
@@ -107,8 +101,9 @@ h6 {
   font-size: 16px; /* Font size for heading on mobile */
 }
 
-@media (max-width: 600px) {
-  h6 {
-      font-size: 14px; /* Adjust heading size for smaller screens */
-  }
+/* Container adjustments */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -879,7 +879,7 @@ export const _10=[
   "The musical player known as 'Sarod Samrat'. Ustad Amjad Ali Khan.",
   "Zakir Hussain won the best contemporary world music for album 'Global Drum Project' in. 2008."
 ]
-
+ 
 export const _11 = [
   "Ustad Mohi Bahuauddin Dagar is a legendary musician associated with .- Rudra Veena.",
   "M.S Subbulakshmi, Priya Sisters, and Bombay Jayashri are exponents of .- Carnatic Music.",
@@ -936,6 +936,9 @@ export const _11 = [
   "Tanjore Balasaraswati was a prominent dancer of .- Bharatanatyam.",
   "Padma Shri awardee (2020) Indira PP Bora, (Bharatanatyam, Kuchipudi, and Sattriya dancer), hails from .- Assam.",
   "Dr. Balamuralikrishna was an exponent of .- Classical carnatic music.",
+  
+];
+export const _12 =  [
   "Lata Mangeshkar received the Bharat Ratna award in .- 2001.",
   "Guru Kelucharan Mohapatra Award is given by the .- State of Odisha.",
   "Guru Gangadhar Pradhan Award is given in the field of .- Dance.",
@@ -955,9 +958,8 @@ export const _11 = [
   "Rani Machaiah was awarded the Padma Shri in 2023 for .- Ummathat Dance.",
   "AR Rahman won the Oscar award for the movie Slumdog Millionaire in .- 2009.",
   "The playback singer Udit Narayan Jha received the Padma Shri in .- 2009.",
-  "Udit Narayan Jha received the Padma Bhushan in .- 2016."
-];
-export const _12 =  [
+  "Udit Narayan Jha received the Padma Bhushan in .- 2016.",]
+  export const _13 =[
   "Lata Mangeshkar Award Instituted in .- 1984.",
   "Nirmala Panikar received the Sangeet Natak Akademi Award for .- 2019.",
   "Nirmala Panikar received the Sangeet Natak Akademi Award for her contribution to .- Mohiniyattam.",
@@ -1031,11 +1033,9 @@ export const _12 =  [
   "Sangeet Natak Akademi instituted Ustad Bismillah Khan Yuva Puraskar in .- 2006.",
   "Sri Shanmukhananda National Eminence Award set up in .- 2002.",
   "Kalidas Samman presented in Classical music, Classical dance, Plastic arts and .- Theatre.",
-  "B Herambanathan (Bharatnatyam) received Sangeet Natak Akademi Award in .- 2013."
-];
-
-export const _13= [
-  "Chevalier of Arts and Letters award (French Award) in 2004 received by .- Alarmel Valli.",
+  "B Herambanathan (Bharatnatyam) received Sangeet Natak Akademi Award in .- 2013.",]
+  export const _14 =[
+    "Chevalier of Arts and Letters award (French Award) in 2004 received by .- Alarmel Valli.",
   "Kalaimamani is the highest civilian award of .- Tamil Nadu.",
   "Deepika Reddy (Kuchipudi) received Sangeet Natak Akademi Award in .- 2017.",
   "Kalidas Samman presented annually by .- Madhya Pradesh government.",
@@ -1062,6 +1062,11 @@ export const _13= [
   "The first Indian musician to receive the Ramon Magsaysay award was .- MS Subbulakshmi.",
   "Kelucharan Mahapatra received the honor of Padma Vibhushan in .- 2000.",
   "Pt. Ravi Shankar (sitar player) was awarded the Bharat Ratna in .- 1999.",
+];
+
+export const _15= [
+
+ 
   "Pandit Birju Maharaj received the Padma Vibhushan in .- 1986.",
   "Purushottam Dadheech (Kathak dancer) was awarded the Padma Shri in .- 2020.",
   "Saroja Vaidyanathan was received Padma Shri in 2002 and Padma Bhushan in .- 2013.",
@@ -1078,6 +1083,10 @@ export const _13= [
   "Pandit Birju Maharaj (Kathak dance) received Padma Vibhushan in .- 1986.",
   "Sonal Mansingh received Padma Bhushan in .- 1992.",
   "Pandit Ravi Shankar (sitarist) was awarded India's highest civilian honour Bharat Ratna in .- 1999.",
+]
+  
+export const _16=[
+  //musical
   "Pandit Ram Narayan is an exponent of .- Sarangi.",
   "Hara Shankar Bhattacharya is a renowned maestro of the .- Sitar.",
   "Neeruswamy Pillai and Rajaratanam Pillai are exponents of the .- Nadaswaram Instrument.",
@@ -1115,7 +1124,8 @@ export const _13= [
 ];
 
 
-export const _14 = [
+export const _17 = [
+  //next pg
   "Yehudi Menuhin was a .- Violinist.",
   "Rudra Veena player who had expertise in the Khandar School of Drupad .- Ustad Asad Ali Khan.",
   "Sivamani is associated with .- Drums.",
@@ -1202,11 +1212,9 @@ export const _14 = [
   "Annapurna Devi is related to musical instrument .- Surbahar.",
   "Nikhil Banerjee is a famous player of .- Sitar.",
   "TH Vinayakram is related to musical instrument of .- Ghatam.",
-  "Alla Rakha Khan is related to musical instrument of .- Tabla."
-];
-
-
-export const _15 = [
+  "Alla Rakha Khan is related to musical instrument of .- Tabla.",]
+  export const _18=[
+  //next pg
   "TR Mahalingam is related to musical instrument of .- Flute.",
   "The 'Dhenka' of the state of Odisha is a popular .- Chordophone instrument.",
   "The Natya Shastra describes stringed instruments as .- ‘Tat Vadya’.",
@@ -1236,6 +1244,11 @@ export const _15 = [
   "Prabhat Sarma received the Sangeet Natak Akademi Award for his contribution as a flute player in .- 2003.",
   "Talvin Singh is associated with .- Tabla.",
   "Ustad Asad Ali Khan (famous for Khandarbani schools of Dhrupad) was exponent of .- Rudra Veena.",
+];
+
+
+export const _19= [
+//festivel
   "Festival of snake-worshiping in Haryana, Punjab, Rajasthan, Uttar Pradesh and Himachal Pradesh .- Gugga Naumi.",
   "“Doul Utsav” is majorly celebrated in .- Assam.",
   "Bhagoria festival associated with .- Holi.",
@@ -1293,7 +1306,7 @@ export const _15 = [
 ];
 
 
-export const _16 = [
+export const _20 = [
   "Goa is the permanent venue of International Film Festival since .- 2004.",
   "Tulip Festival is famous in .- Srinagar.",
   "Gaan-Ngai is a five-day festival celebrated in region of .- North-Eastern.",
@@ -1385,7 +1398,7 @@ export const _16 = [
 ];
 
 
-export const _17 = [
+export const _21 = [
   "Shirui Lily Festival is an annual festival of .- Manipur.",
   "Meher is the presiding deity of the moon which is worshiped during .- Navroz.",
   "Puthari (rice harvest festival) is celebrated by .- Kodavas.",
@@ -1477,95 +1490,9 @@ export const _17 = [
 ];
 
 
- export const _18= [
-  "Shirui Lily Festival is an annual festival of .- Manipur.",
-  "Meher is the presiding deity of the moon which is worshiped during .- Navroz.",
-  "Puthari (rice harvest festival) is celebrated by .- Kodavas.",
-  "Boori-Boot Yullo festival is celebrated by Nyishi tribe in .- Arunachal Pradesh.",
-  "Hola Mohalla, started by Guru Gobind Singh, is primarily celebrated in .- Punjab.",
-  "Generally 'Sharad Purnima’ falls on .- 15 days before Diwali.",
-  "Lathmar Holi is celebrated in .- Vrindavan and Mathura.",
-  "The annual Rann Utsav is observed in .- Dhordo (Gujarat).",
-  "Losoong festival is the Sikkimese New Year of the .- Bhutia tribe.",
-  "The festival of Cheti Chand is observed by the community of .- Sindhis.",
-  "Doljatra is a festival of Assam introduced by .- Sankaradeva.",
-  "India's biggest vineyard music festival Sula Fest is held in .- Maharashtra.",
-  "Arubathu Moovar festival is annually celebrated in .- Tamil Nadu.",
-  "The Rongker festival is celebrated by .- The Karbi tribe (Assam).",
-  "The Doongiri festival is primarily celebrated in .- Himachal Pradesh.",
-  "The Hornbill Festival is celebrated annually in .- Kohima (Nagaland).",
-  "Bhanu Saptami is a festival dedicated to .- Sun God.",
-  "The Ugadi Pachadi dish contains 6 ingredients, associated with the festival of South India, named .- Ugadi festival.",
-  "Festival that is celebrated on the third day of Krishna Paksh of Aashvijam in Andhra Pradesh is .- Atla Tadde.",
-  "Gombe Habba is a famous festival of .- Karnataka.",
-  "Mamallapuram Dance Festival is held every year in .- Tamil Nadu.",
-  "‘Unakoti’ festival is celebrated in .- Tripura.",
-  "The tribal harvest festival of Jharkhand, which falls on the last day of Pus (Pausha) month during winter is known as .- Tusu.",
-  "Mando Festival is celebrated in .- Goa.",
-  "The festival that falls on the first day of the Malayali month of Medam, usually on either April 14 or 15 is .- Vishu.",
-  "The ‘Mukteshwar’ dance festival is held from .- 14th to 16th January.",
-  "‘Ties of protection’ term is associated with .- Raksha Bandhan.",
-  "Nag Panchami is celebrated in .- Shravan Month.",
-  "Banganga festival takes place annually at .- Mumbai (Maharashtra).",
-  "Hemis Festival is celebrated in .- Ladakh.",
-  "Hornbill festival was started by the Government of Nagaland in .- 2000.",
-  "Diwali falls in the month of .- Kartik.",
-  "Chithirai festival is celebrated in .- Tamil Nadu.",
-  "The Birth of Lord Krishna is celebrated as .- Janmashtami.",
-  "Tea Festival is celebrated every year in .- Jorhat (Assam).",
-  "'Lokrang', a 5-day festival organised every year on 26 January in .- Madhya Pradesh.",
-  "Losar festival, celebrated every year in Ladakh, traces its origin to .- Tibetan New Year.",
-  "'Kambala' festival is organised by farming communities in .- Karnataka.",
-  "Sikhs celebrate Bandi Chhor Divas which coincides with .- Diwali.",
-  "The meaning of Tamil festival ‘Pongal’ is .- ‘to boil’.",
-  "Majuli festival is celebrated in .- Assam.",
-  "Bastar Dussehra, a 10-day festival, is associated with .- Chhattisgarh.",
-  "Doongri festival of Himachal Pradesh is celebrated by .- Hindu community.",
-  "Tamladu festival (In Arunachal Pradesh) is celebrated by .- Mishmi tribe.",
-  "Bihu festival of Assam is celebrated .- 3 times a year.",
-  "Guruvayur Ekadashi is the cultural festival of .- Kerala.",
-  "Paro Tschechu is a famous festival of .- Bhutan.",
-  "In Telangana, Muharram is known as .- Peerla Panduga.",
-  "Makaravilakku festival is celebrated in .- Kerala.",
-  "Festival Milad-un-Nabi is also known as .- Barawafat.",
-  "Huthri celebrated during November - December is the harvest festival of .- Karnataka.",
-  "Tamu Lachar festival is celebrated as the New Year by the Gurung Community in .- Sikkim.",
-  "Mopin, an agricultural festival of Arunachal Pradesh, is celebrated by .- Galo tribe.",
-  "Nongkrem is a harvest festival of .- Meghalaya.",
-  "Baisakhi Festival is majorly celebrated in .- Punjab and Haryana.",
-  "Navroz festival is celebrated as the new year of .- Parsi Community.",
-  "Rohini (festival of sowing seeds in the field) is celebrated in .- Jharkhand.",
-  "Lord Jagannath, Balabhadra, and Devi Subhadra are associated with Odisha’s .- Ratha Yatra festival.",
-  "Chhath Puja, celebrated for 4 days, is dedicated to .- God Surya.",
-  "Raja Parba festival of Odisha is held for three days in the month of .- June.",
-  "Chapchar kut is a famous festival of .- Mizoram.",
-  "Dussehra festival is also known as .- Vijayadashami.",
-  "Yaoshang festival of Manipur is celebrated for .- Five days.",
-  "Tusu, a harvest festival in Jharkhand, is celebrated in winter on the final day of the .- Poush month.",
-  "Ladainha is the thanksgiving festival, mainly celebrated in .- Goa.",
-  "‘Gurupurab’ is celebrated as a birth anniversary of .- Guru Nanak Dev.",
-  "Kharchi Puja is a traditional ritual in .- Tripura.",
-  "Pongal, a four-day harvest festival, is generally celebrated in .- South India.",
-  "The Hindu festival Bonalu, centered on Goddess Mahakali, is celebrated in .- Telangana.",
-  "The six-day Khajuraho Dance festival is celebrated in .- Madhya Pradesh.",
-  "The festival which marks the triumph of Goddess Durga over the demon king Mahishasura is .- Navratri/Durga Puja.",
-  "Kicheri is a harvest festival and involves ritual bathing, celebrated majorly in .- Uttar Pradesh.",
-  "Kharchi Puja of Tripura is a Hindu festival that worships .- 14 Hindu Gods.",
-  "The festival of Holika Dahan marks the .- Victory of good over evil.",
-  "Diwali festival is the day when Lord Ram returned to Ayodhya after .- 14 years.",
-  "Kite flying symbolizes the celebration of Uttarayan festival in .- Gujarat.",
-  "Vesak is celebrated as the birth anniversary of .- Gautama Buddha.",
-  "Gangaur festival of Rajasthan is associated with God and Goddess .- Shiva and Parvati.",
-  "The Galdan Namchot festival marks the birthday of a Buddhist saint .- Je Tsongkhapa.",
-  "The monsoon mud festival of Goa is .- Chikal Kalo.",
-  "The Ganga Dussehra is celebrated on the 10th day of Shukla Paksha in the month of .- Jyeshtha.",
-  "Rath Jatra festival, Chariots of Lord Jagannatha, is celebrated in .- Puri, Odisha.",
-  "The festival celebrated to commemorate the formation of the Khalsa Panth is .- Baisakhi.",
-  "Onam, Kerala’s festival, is celebrated in the month of .- August-September.",
-  "Hampi festival is known as .- Vijaya Utsav.",
-  "The Sair-E-Gul Faroshan festival is held in .- Delhi.",
-  "Puthandu is celebrated as New Year in .- Tamil Nadu.",
-  "Wangala festival is celebrated by .- Garo tribe.",
+ export const _22= [
+
+
   "Kagyed dance, which is celebrated annually in Sikkim, falls in .- December.",
   "A Hindu festival celebrated by the Tamil community is .- Thaipusam.",
   "The birthday of Prophet Muhammad is celebrated by the name of .- Mawlid al-Nabi.",
@@ -1656,7 +1583,7 @@ export const _17 = [
 ];
 
 
-export const _19 = [
+export const _23 = [
   "The Baisakhi festival in India marks the birth of Khalsa Panth under .- Guru Gobind Singh (10th Sikh Guru).",
   "A festival in Varanasi, 15 days after Diwali on the ghats of River Ganga is known as .- Dev Deepawali.",
   "Sarhul is a tribal festival celebrated in .- Jharkhand.",
@@ -1742,7 +1669,7 @@ export const _19 = [
 ];
 
 
-export const _20 = [
+export const _24 = [
   "According to the Hindu calendar, Raksha Bandhan falls on .- Shravana Poornima (Shukla).",
   "The festival initiated by Shivaji to channelize the patriotic spirit of Hindus was .- Ganesh Chaturthi.",
   "The traditional dance of Goa performed during the Shigmo festival is .- Morulem.",
@@ -1829,5 +1756,146 @@ export const _20 = [
   "‘Ali-Aye-Ligang’, a spring festival, is associated with .- Assam.",
   "The festival of ancestor worship 'Mee-Dam-Mee-Phee' is celebrated in .- Assam.",
   "Madai Festival is celebrated in .- Chhattisgarh.",
-  "‘Mysore Peta’ is traditional attire worn on .- head."
+  "‘Mysore Peta’ is traditional attire worn on .- head.",
+]
+export const _25=[
+  ". Kailpodh is an indigenous harvest festival of . - Karnataka.",
+  ". The festival 'Tsokum Samai' is celebrated in . - Nagaland.",
+  ". Eid-ul-Fitr is celebrated on the first day of Shawwal, which falls in eight months of . - Islamic calendar.",
+  ". The Thimithi festival in Tamil Nadu is celebrated in the honour of . - Draupadi.",
+  ". Hunter’s Moon in the West is called as . - Kartik Purnima.",
+  ". Navroz is another name for the . - Parsi New Year.",
+  ". Thaipusam festival is celebrated by . - Tamil communities.",
+  ". ‘Phulaich’ is a colorful festival celebrated in . - Himachal Pradesh.",
+  ". Bharat Parv was started by the Ministry of Tourism in . - 2016.",
+  ". ‘Naropa’ (Kumbh of Himalayas) is an annual festival of . - Ladakh.",
+  ". Thadingyut festival is celebrated in . - Myanmar.",
+  ". Nabakalebara festival is associated with . - Jagannath Temple.",
+  ". The Phool Dei festival is celebrated in . - Uttarakhand.",
 ];
+
+
+export const _26=[
+//fairs
+  ". Champakulam boat race is famous in . - Kerala.",
+  ". Somnath fair is popular in . - Gujarat.",
+  ". Simhastha fair is held in Ujjain on the bank of . - Kshipra river.",
+  ". Ambubachi fair is held every year in . - Kamakhya Temple (Assam).",
+  ". Sonepur Cattle fair (Bihar) is associated with . - Hariharnath temple.",
+  ". Sheorinarayan fair is held in . - Chhattisgarh.",
+  ". 'Matua Dharma Maha Mela' is related to . - West Bengal.",
+  ". Nauchandi Fair happens once a year in . - Uttar Pradesh.",
+  ". Sonpur Cattle Fair is held in . - Bihar.",
+  ". Ambubachi Mela marks the menstruation period of the Goddess . - Kamakhya.",
+  ". Ganga Sagar Mela is held every year in . - West Bengal.",
+  ". Kotappakonda Fair of Andhra Pradesh is organised on the eve of the festival . - Maha Shivaratri.",
+  ". Ambubachi Mela dedicated to . - Goddess Kamakhya.",
+  ". Makar Sankranti is celebrated by the name of ‘Magha Saaji’ in . - Himachal Pradesh.",
+  ". 'Ambubachi Mela' is held in . - Guwahati (Assam).",
+  ". A ritual bath named 'Shahi Snan' is a major event of . - Kumbh Mela.",
+  ". Ganga Sagar Mela is conducted at Hooghly river in . - West Bengal.",
+  ". The Champaran Mela is celebrated every year in . - Raipur.",
+  ". The fair held at the shrine of Mastan Shah Vali is . - Dhamoni Urs.",
+  ". The Nanda Devi Fair is organised in the Kumaon region in . - September.",
+  ". The cattle fair celebrated in Himachal Pradesh is . - Nalwari Fair.",
+  ". The Madhavpur Mela of Gujarat celebrated in the memory of . - Krishna & Rukmini.",
+  ". The Longest Moustache competition is held at . - Pushkar Fair.",
+  ". Fair held in Haridwar, Prayagraj, Nashik and Ujjain is . - Kumbh Mela.",
+  ". Gangasagar Mela is held every year in . - West Bengal.",
+  ". Surajkund Mela, also known as the International crafts fair, is held in . - Haryana.",
+  ". Jon Beel mela where the barter system is still used, is held in . - Assam.",
+  ". Kenduli fair is celebrated in . - West Bengal.",
+  ". The world’s largest camel Fairs in India held in . - Pushkar.",
+  ". Nalwadi fair is organized in . - Himachal Pradesh.",
+  ". Dunnapothula Panduga is celebrated in . - Telangana.",
+  ". Jallikattu is a bull taming festival held mainly in . - Tamil Nadu.",
+  ". Surajkund mela is organised in the month of February in . - Faridabad (Haryana).",
+  ". The fair of Pir Budhan is held every year in . - Madhya Pradesh.",
+  ". The famous Ambubachi Mela is organized every year in . - Guwahati.",
+  ". Sonepur Cattle Fair is held on Kartik Poornima in . - Bihar.",
+  ". At Haridwar, Allahabad, Nashik and Ujjain which fair is held . - Kumbh Mela.",
+  ". Pushkar (Camel) Fair is held at . - Rajasthan.",
+  ". Purna Kumbh Mela is held every . - 12 years.",
+  ". Chitra Vichitra, is an annual tribal fair held in the . - Sabarkantha (Gujarat).",
+  ". The Kapil Muni Fair takes place annually on Kartik Purnima (November) in . - Bikaner (Rajasthan).",
+  ". The Shamlaji Fair is held in . - Gujarat.",
+  ". Shri Jagannathji Mela is held at . - Alwar (Rajasthan).",
+  ". The Madhavpur fair is held at . - Porbandar (Gujarat).",
+  ". The world's largest camel fair is held in . - Pushkar (Rajasthan).",
+  ". The Gotmar fair is held annually in . - Chhindwara (Madhya Pradesh).",
+  ". In Karthik month, the Chandrabhaga fair is held annually at . - Jhalrapatan (Rajasthan).",
+  ". 'Farewell My Friend' was an album composed by . - Pandit Ravi Shankar.",
+  ". ML Vasantha Kumari, a renowned vocalist, was known for . - Carnatic music.",
+  ". Basanti Devi Bisht, an Indian folk singer from Uttarakhand, is famous for singing . - Jagar.",
+  ". Bhikhudan Govindbhai Gadhvi is a proponent of . - Dayro (folk song).",
+  ". Baul is a form of folk music of . - West Bengal.",
+  ". 'Mile sur mera tumhara' became popular as a National Integration Song, this line is inscribed on the Sawai Gandharva Memorial (Pune), constructed by . - Bhimsen Joshi.",
+  ". The singing of 'Pankhida' by peasants while working in the fields is associated with . - Rajasthan.",
+  ". The song 'Yeh Dosti Hum Nahi Todenge' was composed by . - Rahul Dev Burman.",
+  ". The singer and composer of the song 'Qismat Ki Hawa' of the Ludo movie is . - C. Ramchandra.",
+  ". The most distinctive type of folk songs of Assam are . - Bihu songs.",
+  ". Qawwali was brought in India from . - Persia (Iran).",
+  ". Thumri singing characteristics in Poorab is . - Fairly slow and staid.",
+  ". Thumri singing characteristics in Punjab is . - more mercurial."
+]
+
+export const _27=[
+   "The song 'Aye Mere Watan Ke Logo' was sung by .- Lata Mangeshkar.",
+   "Vocal music ’Tappa’ is associated with .- Punjab.",
+   "Lalita is a form of folk music from .- Maharashtra.",
+   "The folk song popular in parts of West Bengal, Assam and Bangladesh is .- Bhawaiya.",
+   "Owi is a folk song of .- Maharashtra.",
+   "’Songs of the Blue Hills’, is a documentary of filmmaker .- Utpal Borpujari.",
+   "’Pandavani' is the most celebrated folklore of .- Chhattisgarh.",
+   "The form of devotional poetry sung in praise of God Vithoba is .- Abhanga.",
+   "Bhalari is a folk songs of .- Maharashtra.",
+   "Mando is a form of folk songs from .- Goa.",
+   "Padavali Kirtan are devotional songs dedicated to .- Lord Vishnu.",
+   "The number of notes in scale of ‘Shadava Raga’ are .- Six.",
+   "‘Maand’ is primarily a traditional folk singing style from .- Rajasthan.",
+   "Pankhida is a traditional folk song commonly sung by peasants in .- Rajasthan.",
+   "Wanawan, folk music from Kashmir, is sung during .- wedding ceremonies.",
+   "Bhatiali is the folk music of .- West Bengal.",
+   "’Daskathia’ is a form of ballad singing prevalent in .- Odisha.",
+   "Ustad Alauddin Khan Kala Evam Sangeet Academy organises the Tansen Sangeet Samaroh in .- Gwalior.",
+   "In contemporary Carnatic music, the number of ‘Melakarta ragas’ are .- 72.",
+   "The Prayag Sangeet Samiti at Prayagraj was established in .- 1926.",
+   "Alha singing is a prominent genre of folk songs of some parts of .- Uttar Pradesh.",
+   "Sangeet Ratnakar, the earliest known treatise on music was composed by .- Sharangdev.",
+   "Bon-geet (forest/nature song) is primarily a form of folk song of .- Assam.",
+   "Saikuti zai is the origin of the folk music traditions of .- Mizoram.",
+   "Popular folk song ‘Kajari‘ is popular in .- Uttar Pradesh.",
+   "The song Ekla Chalo Re (Walk alone) was written by .- Rabindranath Tagore.",
+   "The lyrics of the song 'Sare Jahan Se Achcha' was written by .- Mohammed Iqbal.",
+   "The Number of Rasas presented in Classical dances .- Nine.",
+   "Gharana which was propounded by Bade Fateh Ali Khan and Ali Baksh Jarnail Khan Was .- Patiala Gharana.",
+   "Violin virtuoso L Subramaniam is famous for .- Carnatic music.",
+   "Hari Prasad Chaurasia, an Indian flautist, is associated with .- Senia gharana.",
+   "Ustad Allauddin Khan, a sarod player, belonged to .- Maihar gharana.",
+   "Chakri is a choral song which is folk music of .- Kashmir.",
+   "The Sabri brothers, Aziz Warsi and Nusrat Fateh Ali Khan are associated with .- Qawwali.",
+   "'Lalon Fakir' was associated with .- Baul music.",
+   "Girija Devi, a singer of Hindustani classical music belong to .- Thumri genre.",
+   "The folk songs 'Pankhida' traditionally belong to .- Rajasthan.",
+   "Janapada Geete is a folk music from .- Karnataka.",
+   "In Hindustani Classical music, second part of a composition is denoted by .- Antara.",
+   "Qawwali is often associated with .- Sufism.",
+   "Sharda Sinha is a celebrated singer of .- Chhath Puja songs.",
+   "The renowned classical singer Uday Bhawalkar is an exponent of .- Dhrupad.",
+   "The Begum Akhtar is mainly associated with .- Thumri.",
+   "A bassoon musical band is used by the Mewe community of .- Alwar (Rajasthan).",
+   "Pandit Jasraj was related to .- Classical singing.",
+   "'Daskathia', a form of ballad singing, is prevalent in .- Odisha.",
+   "The lyricist of the famous song 'Mile Sur Mera Tumhara' is .- Piyush Pandey.",
+   "Ila Arun and Allah Jilai Bai are folk singers from .- Rajasthan.",
+   "Pandit Bhimsen Gururaj Joshi was associated with .- Kirana Gharana.",
+   "The national song ‘Vande Mataram’ is written by .- Bankim Chandra Chatterjee.",
+   "The Hereileu song is known as the war song of .- Nagaland.",
+   "'Khuded' folk songs belong to .- Uttarakhand.",
+   "The Kathakali vocal performances have traditionally been performed in .- Sanskritised Malayalam.",
+   "The song 'Mere Desh Ki Dharti Sona Ugle' from the film ‘Upkar’ is sung by .- Mahendra Kapoor.",
+   "The song 'Ae mere watan ke logo jara aankh mein bharlo paani' sung by .- Lata Mangeshkar.",
+   "Rabindra Sangeet is associated with .- Rabindranath Tagore.",
+   "Raga Miya Ki Malhar was created by .- Tansen."
+  ]
+  
