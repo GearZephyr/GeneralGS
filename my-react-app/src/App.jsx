@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
-  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27
-} from './index.js'; // Import your arrays here
+  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32
+,_33,_34,_35,_36,_37,_38, _39
+,_40,_41,_42,_43,_44,
+_45,_46,
+_47,} from './index.js'; // Import your arrays here
 import './App.css';
 
 // Map pnumber values to the corresponding arrays
@@ -33,17 +36,44 @@ const data = {
   25: _25,
   26: _26,
   27: _27,
+  28: _28,
+  29: _29,
+  30: _30,
+  31: _31,
+  33: _33,
+  32: _32,
+  34: _34,
+  35: _35,
+  36: _36,
+  37: _37,
+  38:_38,
+  39: _39,
+ 40:_40,
+ 41: _41,
+42: _42,
+43: _43,
+44: _44,
+45: _45,
+46: _46,
+47: _47
+
 };
 
 // Define available page numbers for each topic
 const topics = {
-  Normal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], // All page numbers
+  Normal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], // All page numbers
   Dance: [1, 2, 3, 4, 5], // Page numbers 1 to 5
   ArtsPersonality: [6, 7, 8, 9, 10, 11], // Page numbers 6 to 11
   ArtAward: [12, 13, 14, 15], // Page numbers 12 to 15
   MusicalInstrument: [16, 17, 18], // Page numbers 16 to 18
   Festival: [19, 20, 21, 22, 23, 24, 25], // Page numbers 19 to 25
   Fairs: [26, 27], // Page numbers 26 to 27
+  PaintingDressTribes: [30, 31], // Combined option for pages 30 and 31
+  Language: [32], // Page number 32
+  Songs: [28, 29] ,// Page numbers 28 to 29
+  FirstIndia:[33,34,35,36],
+  Sprots:[37,38,39,40,41,42,43,44,45,46,47]
+
 };
 
 const App = () => {
