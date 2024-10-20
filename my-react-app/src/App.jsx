@@ -1,0 +1,246 @@
+import React, { useState, useEffect } from 'react';
+import {
+  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32,
+  _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, _57, _58, _59, _60, _61,_62,_63,_64,_65,_66,_67,_68,_69,_70,_71,_72,
+  _73,_74,_75,_76,_77,_78
+  } from './index.js'; // Import your arrays here
+import './App.css';
+
+// Map pnumber values to the corresponding arrays
+const data = {
+  1: _1,
+  2: _2,
+  3: _3,
+  4: _4,
+  5: _5,
+  6: _6,
+  7: _7,
+  8: _8,
+  9: _9,
+  10: _10,
+  11: _11,
+  12: _12,
+  13: _13,
+  14: _14,
+  15: _15,
+  16: _16,
+  17: _17,
+  18: _18,
+  19: _19,
+  20: _20,
+  21: _21,
+  22: _22,
+  23: _23,
+  24: _24,
+  25: _25,
+  26: _26,
+  27: _27,
+  28: _28,
+  29: _29,
+  30: _30,
+  31: _31,
+  33: _33,
+  32: _32,
+  34: _34,
+  35: _35,
+  36: _36,
+  37: _37,
+  38:_38,
+  39: _39,
+  40: _40,
+  41: _41,
+  42: _42,
+  43: _43,
+  44: _44,
+  45: _45,
+  46: _46,
+  47: _47,
+  48: _48,
+  49: _49,
+  50: _50,
+  51: _51,
+  52: _52,
+  53: _53,
+  54: _54,
+  55: _55,
+  56: _56,
+  57: _57,
+  58: _58,
+  59: _59,
+  60: _60,
+  61: _61,
+  62: _62,
+  63: _63,
+  64: _64,
+  65: _65,
+  66: _66,
+  67:_67,
+  68:_68,
+  69:_69,
+  70:_70,
+  71:_71,
+  72:_72,
+  73:_73,
+  74:_74,
+  75:_75,
+  76:_76,
+  77:_77,
+  78:_78
+
+};
+
+// Define available page numbers for each topic
+const topics = {
+  Normal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], // All page numbers
+  Dance: [1, 2, 3, 4, 5], // Page numbers 1 to 5
+  ArtsPersonality: [6, 7, 8, 9, 10, 11], // Page numbers 6 to 11
+  ArtAward: [12, 13, 14, 15], // Page numbers 12 to 15
+  MusicalInstrument: [16, 17, 18], // Page numbers 16 to 18
+  Festival: [19, 20, 21, 22, 23, 24, 25], // Page numbers 19 to 25
+  Fairs: [26, 27], // Page numbers 26 to 27
+  PaintingDressTribes: [30, 31], // Combined option for pages 30 and 31
+  Language: [32], // Page number 32
+  Songs: [28, 29] ,// Page numbers 28 to 29
+  FirstIndia:[33,34,35,36],
+  Sprots:[37,38,39,40,41,42,43,44,45,46,47],
+  importtantdates:[59,60,61],
+  famouspersonality:[57,58],
+  book_and_aurthor:[48,49,50,51,52,53,54,55,56],
+  states:[62,63,64,65,66],
+  organization:[67,68,69,70,71],
+  world:[72,73,74],
+  fullform:[75],
+  Religious_places:[76,77,78]
+};
+
+const App = () => {
+  const [number, setNumber] = useState(1);  // Controls how many times each item is repeated
+  const [pnumber, setpNumber] = useState(1); // Page number to show
+  const [ary, setAry] = useState([]);
+  const [selectedTopic, setSelectedTopic] = useState('Dance'); // State to store the selected topic
+
+  // Function to shuffle the array
+  function shuffleArray(array) {
+    let shuffledArray = [...array]; // Create a copy to avoid mutating the original array
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray; // Return shuffled array without updating state
+  }
+
+  // Function to handle array updates based on pnumber and number
+  function updateArray() {
+    if (data[pnumber]) {
+      let shuffledArray = shuffleArray(data[pnumber]);
+      let repeatedArray = [];
+
+      // Repeat each item `number` times in succession
+      for (let item of shuffledArray) {
+        for (let i = 0; i < number; i++) {
+          repeatedArray.push(item);
+        }
+      }
+
+      setAry(repeatedArray); // Update state with repeated and shuffled array
+    }
+  }
+
+  // Use useEffect to shuffle the array whenever pnumber or number changes
+  useEffect(() => {
+    updateArray();
+  }, [pnumber, number]);
+
+  // Handle topic selection and set the corresponding page number
+  const handleTopicChange = (event) => {
+    const selected = event.target.value;
+    setSelectedTopic(selected);
+
+    // Ensure pnumber is within the range of the selected topic
+    const availablePages = topics[selected];
+    if (availablePages) {
+      setpNumber((prev) => (availablePages.includes(prev) ? prev : availablePages[0]));
+    }
+  };
+
+  // Handle incrementing and decrementing pnumber
+  const incrementPage = () => {
+    const availablePages = topics[selectedTopic];
+    if (availablePages) {
+      setpNumber((prev) => {
+        const currentIndex = availablePages.indexOf(prev);
+        return availablePages[(currentIndex + 1) % availablePages.length];
+      });
+    }
+  };
+
+  const decrementPage = () => {
+    const availablePages = topics[selectedTopic];
+    if (availablePages) {
+      setpNumber((prev) => {
+        const currentIndex = availablePages.indexOf(prev);
+        return availablePages[(currentIndex - 1 + availablePages.length) % availablePages.length];
+      });
+    }
+  };
+
+  return (
+    <div>
+      <div className='container'>
+        {/* Dropdown for topics */}
+        <div className='dropdown'>
+          <label htmlFor="topics">Select Topic:</label>
+          <select id="topics" value={selectedTopic} onChange={handleTopicChange}>
+            {Object.keys(topics).map((topic) => (
+              <option key={topic} value={topic}>
+                {topic}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className='btn'>
+          <div className='inbtn'>
+            <h6>times</h6>
+            <div className='inbtn'>
+              <button onClick={() => setNumber(p => Math.max(1, p - 1))}>-</button>
+              <h3>{number}</h3>
+              <button onClick={() => setNumber(p => p + 1)}>+</button>
+            </div>
+          </div>
+        </div>
+
+        <div className='btn'>
+          <div className='inbtn'>
+            <h6>pg no</h6>
+            <div className='inbtn'>
+              <button onClick={decrementPage}>-</button>
+              <h3>{pnumber}</h3>
+              <button onClick={incrementPage}>+</button>
+            </div>
+          </div>
+        </div>
+
+        <div className='btn'>
+          <div className='inbtn'>
+            <button onClick={updateArray}>Shuffle List</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Display the selected topic */}
+      <h2>Selected Topic: {selectedTopic}</h2>
+
+      {/* Display the points */}
+      <ul>
+        {ary.map((name, index) => (
+          <div key={index}>
+            <p>{name}</p><br />
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
