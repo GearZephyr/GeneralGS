@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {
-  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32,
-  _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, _57, _58, _59, _60, _61,_62,_63,_64,_65,_66,_67,_68,_69,_70,_71,_72,
-  _73,_74,_75,_76,_77,_78
-  } from './index.js'; // Import your arrays here
 import './App.css';
 
 // Map pnumber values to the corresponding arrays
@@ -39,13 +34,13 @@ const data = {
   29: _29,
   30: _30,
   31: _31,
-  33: _33,
   32: _32,
+  33: _33,
   34: _34,
   35: _35,
   36: _36,
   37: _37,
-  38:_38,
+  38: _38,
   39: _39,
   40: _40,
   41: _41,
@@ -74,120 +69,142 @@ const data = {
   64: _64,
   65: _65,
   66: _66,
-  67:_67,
-  68:_68,
-  69:_69,
-  70:_70,
-  71:_71,
-  72:_72,
-  73:_73,
-  74:_74,
-  75:_75,
-  76:_76,
-  77:_77,
-  78:_78
-
+  67: _67,
+  68: _68,
+  69: _69,
+  70: _70,
+  71: _71,
+  72: _72,
+  73: _73,
+  74: _74,
+  75: _75,
+  76: _76,
+  77: _77,
+  78: _78
 };
 
 // Define available page numbers for each topic
 const topics = {
-  Normal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32], // All page numbers
-  Dance: [1, 2, 3, 4, 5], // Page numbers 1 to 5
-  ArtsPersonality: [6, 7, 8, 9, 10, 11], // Page numbers 6 to 11
-  ArtAward: [12, 13, 14, 15], // Page numbers 12 to 15
-  MusicalInstrument: [16, 17, 18], // Page numbers 16 to 18
-  Festival: [19, 20, 21, 22, 23, 24, 25], // Page numbers 19 to 25
-  Fairs: [26, 27], // Page numbers 26 to 27
-  PaintingDressTribes: [30, 31], // Combined option for pages 30 and 31
-  Language: [32], // Page number 32
-  Songs: [28, 29] ,// Page numbers 28 to 29
-  FirstIndia:[33,34,35,36],
-  Sprots:[37,38,39,40,41,42,43,44,45,46,47],
-  importtantdates:[59,60,61],
-  famouspersonality:[57,58],
-  book_and_aurthor:[48,49,50,51,52,53,54,55,56],
-  states:[62,63,64,65,66],
-  organization:[67,68,69,70,71],
-  world:[72,73,74],
-  fullform:[75],
-  Religious_places:[76,77,78]
+  Normal: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
+  Dance: [1, 2, 3, 4, 5],
+  ArtsPersonality: [6, 7, 8, 9, 10, 11],
+  ArtAward: [12, 13, 14, 15],
+  MusicalInstrument: [16, 17, 18],
+  Festival: [19, 20, 21, 22, 23, 24, 25],
+  Fairs: [26, 27],
+  PaintingDressTribes: [30, 31],
+  Language: [32],
+  Songs: [28, 29],
+  FirstIndia: [33, 34, 35, 36],
+  Sports: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
+  ImportantDates: [59, 60, 61],
+  FamousPersonality: [57, 58],
+  BookAndAuthor: [48, 49, 50, 51, 52, 53, 54, 55, 56],
+  States: [62, 63, 64, 65, 66],
+  Organization: [67, 68, 69, 70, 71],
+  World: [72, 73, 74],
+  FullForm: [75],
+  ReligiousPlaces: [76, 77, 78]
 };
 
+import {
+  _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32,
+  _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, _57, _58, _59, _60, _61, _62, _63, _64, _65, _66, _67, _68, _69, _70, _71, _72,
+  _73, _74, _75, _76, _77, _78
+} from './index.js';
+
+
+
+
 const App = () => {
-  const [number, setNumber] = useState(1);  // Controls how many times each item is repeated
-  const [pnumber, setpNumber] = useState(1); // Page number to show
+  const [number, setNumber] = useState(1);
+  const [pnumber, setpNumber] = useState(1);
   const [ary, setAry] = useState([]);
-  const [selectedTopic, setSelectedTopic] = useState('Dance'); // State to store the selected topic
+  const [selectedTopic, setSelectedTopic] = useState('Dance');
+  const [checkedItems, setCheckedItems] = useState(() => {
+    const savedCheckedItems = localStorage.getItem('checkedItems');
+    return savedCheckedItems ? JSON.parse(savedCheckedItems) : {};
+  });
+  const [viewMode, setViewMode] = useState('Normal');
 
   // Function to shuffle the array
-  function shuffleArray(array) {
-    let shuffledArray = [...array]; // Create a copy to avoid mutating the original array
+  const shuffleArray = (array) => {
+    let shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
-    return shuffledArray; // Return shuffled array without updating state
-  }
+    return shuffledArray;
+  };
 
   // Function to handle array updates based on pnumber and number
-  function updateArray() {
+  const updateArray = () => {
     if (data[pnumber]) {
       let shuffledArray = shuffleArray(data[pnumber]);
       let repeatedArray = [];
-
-      // Repeat each item `number` times in succession
       for (let item of shuffledArray) {
         for (let i = 0; i < number; i++) {
           repeatedArray.push(item);
         }
       }
-
-      setAry(repeatedArray); // Update state with repeated and shuffled array
+      setAry(repeatedArray);
     }
-  }
+  };
 
-  // Use useEffect to shuffle the array whenever pnumber or number changes
+  // Save checkedItems to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('checkedItems', JSON.stringify(checkedItems));
+  }, [checkedItems]);
+
+  // Update array when pnumber or number changes
   useEffect(() => {
     updateArray();
   }, [pnumber, number]);
 
-  // Handle topic selection and set the corresponding page number
+  // Handle checkbox changes
+  const handleCheckboxChange = (index) => {
+    setCheckedItems((prev) => ({
+      ...prev,
+      [selectedTopic]: {
+        ...prev[selectedTopic],
+        [index]: !prev[selectedTopic]?.[index], // Toggle the checkbox state for the current topic
+      },
+    }));
+  };
+
+  // Handle topic changes
   const handleTopicChange = (event) => {
     const selected = event.target.value;
     setSelectedTopic(selected);
-
-    // Ensure pnumber is within the range of the selected topic
     const availablePages = topics[selected];
     if (availablePages) {
       setpNumber((prev) => (availablePages.includes(prev) ? prev : availablePages[0]));
     }
   };
 
-  // Handle incrementing and decrementing pnumber
-  const incrementPage = () => {
-    const availablePages = topics[selectedTopic];
-    if (availablePages) {
-      setpNumber((prev) => {
-        const currentIndex = availablePages.indexOf(prev);
-        return availablePages[(currentIndex + 1) % availablePages.length];
-      });
-    }
+  // Handle view mode changes
+  const handleViewModeChange = (event) => {
+    setViewMode(event.target.value);
   };
 
-  const decrementPage = () => {
-    const availablePages = topics[selectedTopic];
-    if (availablePages) {
-      setpNumber((prev) => {
-        const currentIndex = availablePages.indexOf(prev);
-        return availablePages[(currentIndex - 1 + availablePages.length) % availablePages.length];
-      });
-    }
+  // Handle clearing all checkboxes for the current topic
+  const handleClearAll = () => {
+    setCheckedItems((prev) => ({
+      ...prev,
+      [selectedTopic]: {}, // Clear checkboxes for the current topic
+    }));
   };
+
+  // Filter array based on view mode
+  const filteredAry =
+    viewMode === 'Marked'
+      ? ary.filter((_, index) => checkedItems[selectedTopic]?.[index])
+      : ary;
 
   return (
     <div>
       <div className='container'>
-        {/* Dropdown for topics */}
+        {/* Topic dropdown */}
         <div className='dropdown'>
           <label htmlFor="topics">Select Topic:</label>
           <select id="topics" value={selectedTopic} onChange={handleTopicChange}>
@@ -199,6 +216,16 @@ const App = () => {
           </select>
         </div>
 
+        {/* View mode dropdown */}
+        <div className='dropdown'>
+          <label htmlFor="viewMode">View Mode:</label>
+          <select id="viewMode" value={viewMode} onChange={handleViewModeChange}>
+            <option value="Normal">Normal</option>
+            <option value="Marked">Marked</option>
+          </select>
+        </div>
+
+        {/* Number controls */}
         <div className='btn'>
           <div className='inbtn'>
             <h6>times</h6>
@@ -210,32 +237,49 @@ const App = () => {
           </div>
         </div>
 
+        {/* Page number controls */}
         <div className='btn'>
           <div className='inbtn'>
             <h6>pg no</h6>
             <div className='inbtn'>
-              <button onClick={decrementPage}>-</button>
+              <button onClick={() => setpNumber(p => Math.max(1, p - 1))}>-</button>
               <h3>{pnumber}</h3>
-              <button onClick={incrementPage}>+</button>
+              <button onClick={() => setpNumber(p => p + 1)}>+</button>
             </div>
           </div>
         </div>
 
+        {/* Shuffle button */}
         <div className='btn'>
           <div className='inbtn'>
             <button onClick={updateArray}>Shuffle List</button>
           </div>
         </div>
+
+        {/* Clear All button */}
+        <div className='btn'>
+          <div className='inbtn'>
+            <button onClick={handleClearAll}>Clear All</button>
+          </div>
+        </div>
       </div>
 
-      {/* Display the selected topic */}
+      {/* Display selected topic */}
       <h2>Selected Topic: {selectedTopic}</h2>
 
-      {/* Display the points */}
+      {/* Display points */}
       <ul>
-        {ary.map((name, index) => (
+        {filteredAry.map((name, index) => (
           <div key={index}>
-            <p>{name}</p><br />
+            <p>
+              {name}
+              <input
+                type="checkbox"
+                checked={checkedItems[selectedTopic]?.[index] || false}
+                onChange={() => handleCheckboxChange(index)}
+              />
+            </p>
+            <br />
           </div>
         ))}
       </ul>
