@@ -114,8 +114,6 @@ import {
 } from './index.js';
 
 
-
-
 const App = () => {
   const [number, setNumber] = useState(1);
   const [pnumber, setpNumber] = useState(1);
@@ -162,12 +160,12 @@ const App = () => {
   }, [pnumber, number]);
 
   // Handle checkbox changes
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (point) => {
     setCheckedItems((prev) => ({
       ...prev,
       [selectedTopic]: {
         ...prev[selectedTopic],
-        [index]: !prev[selectedTopic]?.[index], // Toggle the checkbox state for the current topic
+        [point]: !prev[selectedTopic]?.[point], // Toggle the checkbox state for the current point
       },
     }));
   };
@@ -198,7 +196,7 @@ const App = () => {
   // Filter array based on view mode
   const filteredAry =
     viewMode === 'Marked'
-      ? ary.filter((_, index) => checkedItems[selectedTopic]?.[index])
+      ? ary.filter((point) => checkedItems[selectedTopic]?.[point])
       : ary;
 
   return (
@@ -269,14 +267,14 @@ const App = () => {
 
       {/* Display points */}
       <ul>
-        {filteredAry.map((name, index) => (
+        {filteredAry.map((point, index) => (
           <div key={index}>
             <p>
-              {name}
+              {point}
               <input
                 type="checkbox"
-                checked={checkedItems[selectedTopic]?.[index] || false}
-                onChange={() => handleCheckboxChange(index)}
+                checked={checkedItems[selectedTopic]?.[point] || false}
+                onChange={() => handleCheckboxChange(point)}
               />
             </p>
             <br />
