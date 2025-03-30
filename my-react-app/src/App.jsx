@@ -113,7 +113,6 @@ import {
   _73, _74, _75, _76, _77, _78
 } from './index.js';
 
-
 const App = () => {
   const [number, setNumber] = useState(1);
   const [pnumber, setpNumber] = useState(1);
@@ -136,11 +135,14 @@ const App = () => {
   };
 
   // Function to handle array updates based on pnumber and number
-  const updateArray = () => {
+  const updateArray = (shouldShuffle = false) => {
     if (data[pnumber]) {
-      let shuffledArray = shuffleArray(data[pnumber]);
+      let currentArray = [...data[pnumber]];
+      if (shouldShuffle) {
+        currentArray = shuffleArray(currentArray);
+      }
       let repeatedArray = [];
-      for (let item of shuffledArray) {
+      for (let item of currentArray) {
         for (let i = 0; i < number; i++) {
           repeatedArray.push(item);
         }
@@ -154,7 +156,7 @@ const App = () => {
     localStorage.setItem('checkedItems', JSON.stringify(checkedItems));
   }, [checkedItems]);
 
-  // Update array when pnumber or number changes
+  // Update array when pnumber or number changes (without auto-shuffling)
   useEffect(() => {
     updateArray();
   }, [pnumber, number]);
@@ -165,7 +167,7 @@ const App = () => {
       ...prev,
       [selectedTopic]: {
         ...prev[selectedTopic],
-        [point]: !prev[selectedTopic]?.[point], // Toggle the checkbox state for the current point
+        [point]: !prev[selectedTopic]?.[point],
       },
     }));
   };
@@ -176,7 +178,7 @@ const App = () => {
     setSelectedTopic(selected);
     const availablePages = topics[selected];
     if (availablePages) {
-      setpNumber((prev) => (availablePages.includes(prev) ? prev : availablePages[0]));
+      setpNumber(availablePages[0]);
     }
   };
 
@@ -189,8 +191,40 @@ const App = () => {
   const handleClearAll = () => {
     setCheckedItems((prev) => ({
       ...prev,
-      [selectedTopic]: {}, // Clear checkboxes for the current topic
+      [selectedTopic]: {},
     }));
+  };
+
+  // Handle page number changes with bounds checking
+  const incrementPage = () => {
+    const availablePages = topics[selectedTopic];
+    if (availablePages) {
+      setpNumber(prev => {
+        const currentIndex = availablePages.indexOf(prev);
+        if (currentIndex < availablePages.length - 1) {
+          return availablePages[currentIndex + 1];
+        }
+        return prev;
+      });
+    }
+  };
+
+  const decrementPage = () => {
+    const availablePages = topics[selectedTopic];
+    if (availablePages) {
+      setpNumber(prev => {
+        const currentIndex = availablePages.indexOf(prev);
+        if (currentIndex > 0) {
+          return availablePages[currentIndex - 1];
+        }
+        return prev;
+      });
+    }
+  };
+
+  // Manual shuffle function
+  const handleShuffle = () => {
+    updateArray(true);
   };
 
   // Filter array based on view mode
@@ -240,9 +274,9 @@ const App = () => {
           <div className='inbtn'>
             <h6>pg no</h6>
             <div className='inbtn'>
-              <button onClick={() => setpNumber(p => Math.max(1, p - 1))}>-</button>
+              <button onClick={decrementPage}>-</button>
               <h3>{pnumber}</h3>
-              <button onClick={() => setpNumber(p => p + 1)}>+</button>
+              <button onClick={incrementPage}>+</button>
             </div>
           </div>
         </div>
@@ -250,7 +284,7 @@ const App = () => {
         {/* Shuffle button */}
         <div className='btn'>
           <div className='inbtn'>
-            <button onClick={updateArray}>Shuffle List</button>
+            <button onClick={handleShuffle}>Shuffle List</button>
           </div>
         </div>
 
