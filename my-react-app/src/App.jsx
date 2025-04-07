@@ -203,34 +203,35 @@ const App = () => {
               <button onClick={handleClearAll}>Clear All</button>
             </div>
 
-            <div className='control-group test-config'>
-              <label>Test On:
-                <select 
-                  value={testConfig.type}
-                  onChange={(e) => setTestConfig({...testConfig, type: e.target.value})}
-                >
-                  <option value="page">Current Page</option>
-                  <option value="topic">Entire Topic</option>
-                </select>
-              </label>
-              <label>Questions:
-                <input 
-                  type="number" 
-                  min="1"
-                  value={testConfig.questionCount}
-                  onChange={(e) => setTestConfig({
-                    ...testConfig, 
-                    questionCount: Math.max(1, parseInt(e.target.value) || 1)
-                  })}
-                />
-              </label>
-              <button 
-                className="start-test"
-                onClick={() => setTestMode(true)}
-              >
-                Start Test
-              </button>
-            </div>
+          
+<div className='control-group test-config'>
+  <label>Test Type:
+    <select 
+      value={testConfig.type}
+      onChange={(e) => setTestConfig({...testConfig, type: e.target.value})}
+    >
+      <option value="page">Current Page</option>
+      <option value="topic">Entire Topic</option>
+    </select>
+  </label>
+  <label>Questions:
+    <input 
+      type="number" 
+      min="1"
+      value={testConfig.questionCount}
+      onChange={(e) => setTestConfig({
+        ...testConfig, 
+        questionCount: Math.max(1, parseInt(e.target.value) || 1)
+      })}
+    />
+  </label>
+  <button 
+    className="start-test"
+    onClick={() => setTestMode(true)}
+  >
+    Start Fill-in-the-Blanks Test
+  </button>
+</div>
           </div>
 
           <div className="content-area">

@@ -3,163 +3,165 @@ import React, { useState, useEffect } from 'react';
 const Test = ({ data, topics, selectedTopic, pnumber, config, onExit }) => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [userAnswer, setUserAnswer] = useState('');
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [testCompleted, setTestCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const generateQuestions = () => {
-      let questionPool = [];
-      
-      if (config.type === 'page') {
-        questionPool = [...data[pnumber]];
-      } else {
-        const pages = topics[selectedTopic];
-        questionPool = pages.flatMap(page => [...data[page]]);
+      setIsLoading(true);
+      try {
+        const questionPool = config.type === 'page' 
+          ? [...data[pnumber]] 
+          : topics[selectedTopic].flatMap(page => [...data[page]]);
+
+        const formattedQuestions = shuffleArray(questionPool)
+          .slice(0, config.questionCount)
+          .map(q => {
+            const [question, answer] = q.split('-').map(s => s.trim());
+            return { 
+              question, 
+              answer,
+              isNumeric: !isNaN(answer) || /^\d{4}$/.test(answer) // Check if answer is numeric or year
+            };
+          });
+
+        setQuestions(formattedQuestions);
+      } finally {
+        setIsLoading(false);
       }
-
-      const shuffled = shuffleArray(questionPool).slice(0, config.questionCount);
-      
-      const formattedQuestions = shuffled.map(q => {
-        const [questionPart, answerPart] = q.split('-').map(s => s.trim());
-        const wrongOptions = getWrongOptions(questionPool, answerPart, config.optionsCount - 1);
-        const options = shuffleArray([answerPart, ...wrongOptions]);
-        
-        return {
-          question: questionPart,
-          answer: answerPart,
-          options,
-          userAnswer: null,
-          isCorrect: false
-        };
-      });
-
-      setQuestions(formattedQuestions);
     };
 
     generateQuestions();
   }, []);
 
-  const getWrongOptions = (pool, correctAnswer, count) => {
-    const wrongAnswers = pool
-      .filter(item => !item.includes(correctAnswer))
-      .map(item => item.split('-')[1].trim());
+  const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
+
+  const checkAnswer = (userAnswer, correctAnswer, isNumeric) => {
+    if (isNumeric) {
+      // For numbers/years, require exact match
+      return userAnswer.trim() === correctAnswer;
+    } else {
+      // For text answers, allow minor spelling mistakes (Levenshtein distance <= 2)
+      return calculateSimilarity(userAnswer.toLowerCase(), correctAnswer.toLowerCase()) >= 0.8;
+    }
+  };
+
+  // Simple similarity calculation (0-1 scale)
+  const calculateSimilarity = (str1, str2) => {
+    if (str1 === str2) return 1;
+    if (str1.length === 0 || str2.length === 0) return 0;
     
-    return shuffleArray([...new Set(wrongAnswers)]).slice(0, count);
+    const longer = str1.length > str2.length ? str1 : str2;
+    const shorter = str1.length > str2.length ? str2 : str1;
+    
+    // Quick check for minor differences
+    if (longer.includes(shorter) || shorter.includes(longer)) return 0.9;
+    
+    // Simple character matching
+    const matchingChars = [...shorter].filter((c, i) => c === longer[i]).length;
+    return matchingChars / longer.length;
   };
 
-  const shuffleArray = (array) => {
-    return [...array].sort(() => Math.random() - 0.5);
-  };
+  const handleAnswerSubmit = () => {
+    const currentQuestion = questions[currentIndex];
+    const isCorrect = checkAnswer(
+      userAnswer, 
+      currentQuestion.answer, 
+      currentQuestion.isNumeric
+    );
 
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-  };
+    if (isCorrect) {
+      setScore(prev => prev + 1);
+    }
 
-  const handleNextQuestion = () => {
+    // Update question with user's answer
     const updatedQuestions = [...questions];
-    const isCorrect = selectedOption === updatedQuestions[currentIndex].answer;
-    
     updatedQuestions[currentIndex] = {
-      ...updatedQuestions[currentIndex],
-      userAnswer: selectedOption,
+      ...currentQuestion,
+      userAnswer,
       isCorrect
     };
-
     setQuestions(updatedQuestions);
-    
-    if (isCorrect) {
-      setScore(score + 1);
-    }
 
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setSelectedOption(null);
+      setCurrentIndex(prev => prev + 1);
+      setUserAnswer('');
     } else {
-      setTestCompleted(true);
+      setShowResult(true);
     }
   };
 
-  const handleShowResults = () => {
-    setShowResult(true);
-  };
-
-  const handleRestartTest = () => {
+  const restartTest = () => {
     setCurrentIndex(0);
-    setSelectedOption(null);
     setScore(0);
-    setTestCompleted(false);
+    setUserAnswer('');
     setShowResult(false);
   };
 
-  if (questions.length === 0) return <div className="loading">Loading questions...</div>;
+  if (isLoading) return (
+    <div className="loading-screen">
+      <h3>Preparing your test...</h3>
+      <div className="spinner"></div>
+    </div>
+  );
 
-  if (testCompleted) {
-    return (
-      <div className="test-results">
-        <h2>Test Completed!</h2>
-        <p className="score-display">Your score: <span>{score}</span> out of <span>{questions.length}</span></p>
-        <p className="percentage">Percentage: <span>{Math.round((score / questions.length) * 100)}%</span></p>
-        
-        <div className="result-buttons">
-          <button className="view-results" onClick={handleShowResults}>View Results</button>
-          <button className="restart-test" onClick={handleRestartTest}>Restart Test</button>
-          <button className="exit-test" onClick={onExit}>Exit Test</button>
-        </div>
-
-        {showResult && (
-          <div className="detailed-results">
-            {questions.map((q, index) => (
-              <div key={index} className={`question-result ${q.isCorrect ? 'correct' : 'incorrect'}`}>
-                <p className="question-text"><strong>Q{index + 1}:</strong> {q.question}</p>
-                <p className="user-answer">Your answer: {q.userAnswer}</p>
-                <p className="correct-answer">Correct answer: {q.answer}</p>
-              </div>
-            ))}
-          </div>
-        )}
+  if (showResult) return (
+    <div className="results-screen">
+      <h2>Test Results</h2>
+      <div className="score-card">
+        <p>You scored <span>{score}/{questions.length}</span></p>
+        <p>{Math.round((score/questions.length)*100)}% Correct</p>
       </div>
-    );
-  }
+      <div className="result-actions">
+        <button onClick={restartTest}>Try Again</button>
+        <button onClick={onExit}>Return to Study</button>
+      </div>
+      <div className="question-review">
+        {questions.map((q, i) => (
+          <div key={i} className={`review-item ${q.isCorrect ? 'correct' : 'incorrect'}`}>
+            <p><strong>Q{i+1}:</strong> {q.question}</p>
+            <p>Your answer: {q.userAnswer || "(blank)"}</p>
+            <p>Correct answer: {q.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="test-container">
+    <div className="test-screen">
       <div className="test-header">
-        <h2>Test Mode ({config.type === 'page' ? `Page ${pnumber}` : selectedTopic})</h2>
-        <div className="test-progress">
-          <span>Question {currentIndex + 1} of {questions.length}</span>
-          <span className="score">Score: {score}</span>
+        <h3>Question {currentIndex + 1} of {questions.length}</h3>
+        <div className="score-display">Score: {score}</div>
+      </div>
+      
+      <div className="question-card">
+        <h4>{currentQuestion.question}</h4>
+        <div className="answer-input-container">
+          <input
+            type="text"
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            placeholder="Type your answer here..."
+            autoFocus
+          />
+          {currentQuestion.isNumeric && (
+            <div className="input-hint">(Enter exact number/year)</div>
+          )}
         </div>
       </div>
 
-      <div className="question-container">
-        <h3>{currentQuestion.question}</h3>
-        
-        <div className="options-container">
-          {currentQuestion.options.map((option, i) => (
-            <div 
-              key={i} 
-              className={`option ${selectedOption === option ? 'selected' : ''}`}
-              onClick={() => handleOptionSelect(option)}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="test-controls">
-        <button 
-          className="next-button"
-          onClick={handleNextQuestion}
-          disabled={!selectedOption}
-        >
-          {currentIndex < questions.length - 1 ? 'Next Question' : 'Finish Test'}
-        </button>
-      </div>
+      <button 
+        className="submit-btn"
+        onClick={handleAnswerSubmit}
+        disabled={!userAnswer.trim()}
+      >
+        {currentIndex < questions.length - 1 ? 'Next Question' : 'Finish Test'}
+      </button>
     </div>
   );
 };
