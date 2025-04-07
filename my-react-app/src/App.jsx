@@ -7,7 +7,6 @@ import {
   _73, _74, _75, _76, _77, _78
 } from './index.js';
 
-// Map pnumber values to the corresponding arrays
 const data = {
   1: _1, 2: _2, 3: _3, 4: _4, 5: _5, 6: _6, 7: _7, 8: _8, 9: _9, 10: _10,
   11: _11, 12: _12, 13: _13, 14: _14, 15: _15, 16: _16, 17: _17, 18: _18, 19: _19, 20: _20,
@@ -19,7 +18,6 @@ const data = {
   71: _71, 72: _72, 73: _73, 74: _74, 75: _75, 76: _76, 77: _77, 78: _78
 };
 
-// Define available page numbers for each topic
 const topics = {
   Normal: Array.from({length: 32}, (_, i) => i + 1),
   Dance: [1, 2, 3, 4, 5],
@@ -60,7 +58,6 @@ const App = () => {
     optionsCount: 4
   });
 
-  // Function to shuffle the array
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -70,7 +67,6 @@ const App = () => {
     return shuffledArray;
   };
 
-  // Function to handle array updates
   const updateArray = (shouldShuffle = false) => {
     if (data[pnumber]) {
       let currentArray = [...data[pnumber]];
@@ -84,17 +80,14 @@ const App = () => {
     }
   };
 
-  // Save checkedItems to localStorage
   useEffect(() => {
     localStorage.setItem('checkedItems', JSON.stringify(checkedItems));
   }, [checkedItems]);
 
-  // Update array when pnumber or number changes
   useEffect(() => {
     updateArray();
   }, [pnumber, number]);
 
-  // Handle checkbox changes
   const handleCheckboxChange = (point) => {
     setCheckedItems(prev => ({
       ...prev,
@@ -105,7 +98,6 @@ const App = () => {
     }));
   };
 
-  // Handle topic changes
   const handleTopicChange = (event) => {
     const selected = event.target.value;
     setSelectedTopic(selected);
@@ -115,12 +107,10 @@ const App = () => {
     }
   };
 
-  // Handle view mode changes
   const handleViewModeChange = (event) => {
     setViewMode(event.target.value);
   };
 
-  // Handle clearing all checkboxes
   const handleClearAll = () => {
     setCheckedItems(prev => ({
       ...prev,
@@ -128,7 +118,6 @@ const App = () => {
     }));
   };
 
-  // Handle page navigation
   const incrementPage = () => {
     const availablePages = topics[selectedTopic];
     if (availablePages) {
@@ -153,12 +142,10 @@ const App = () => {
     }
   };
 
-  // Manual shuffle function
   const handleShuffle = () => {
     updateArray(true);
   };
 
-  // Filter array based on view mode
   const filteredAry = viewMode === 'Marked'
     ? ary.filter(point => checkedItems[selectedTopic]?.[point])
     : ary;
@@ -168,7 +155,6 @@ const App = () => {
       {!testMode ? (
         <>
           <div className='control-panel'>
-            {/* Topic dropdown */}
             <div className='control-group'>
               <label htmlFor="topics">Select Topic:</label>
               <select 
@@ -182,7 +168,6 @@ const App = () => {
               </select>
             </div>
 
-            {/* View mode dropdown */}
             <div className='control-group'>
               <label htmlFor="viewMode">View Mode:</label>
               <select 
@@ -195,7 +180,6 @@ const App = () => {
               </select>
             </div>
 
-            {/* Number controls */}
             <div className='control-group'>
               <label>Repeat Count:</label>
               <div className='number-control'>
@@ -205,7 +189,6 @@ const App = () => {
               </div>
             </div>
 
-            {/* Page number controls */}
             <div className='control-group'>
               <label>Page Number:</label>
               <div className='number-control'>
@@ -215,13 +198,11 @@ const App = () => {
               </div>
             </div>
 
-            {/* Action buttons */}
             <div className='control-group actions'>
               <button onClick={handleShuffle}>Shuffle List</button>
               <button onClick={handleClearAll}>Clear All</button>
             </div>
 
-            {/* Test configuration */}
             <div className='control-group test-config'>
               <label>Test On:
                 <select 
@@ -235,11 +216,11 @@ const App = () => {
               <label>Questions:
                 <input 
                   type="number" 
-                  min="1" max="50"
+                  min="1"
                   value={testConfig.questionCount}
                   onChange={(e) => setTestConfig({
                     ...testConfig, 
-                    questionCount: Math.min(50, Math.max(1, e.target.value))
+                    questionCount: Math.max(1, parseInt(e.target.value) || 1)
                   })}
                 />
               </label>
@@ -252,7 +233,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Content display */}
           <div className="content-area">
             <h2>Selected Topic: {selectedTopic}</h2>
             <ul className="items-list">
