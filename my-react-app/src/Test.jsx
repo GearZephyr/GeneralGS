@@ -1,3 +1,4 @@
+/*
 import React, { useState, useEffect } from 'react';
 
 const Test = ({ data, topics, selectedTopic, pnumber, config, onExit }) => {
@@ -127,6 +128,228 @@ const Test = ({ data, topics, selectedTopic, pnumber, config, onExit }) => {
           </div>
         ))}
       </div>
+    </div>
+  );
+
+  const currentQuestion = questions[currentIndex];
+
+  return (
+    <div className="test-screen">
+      <div className="test-header">
+        <h3>Question {currentIndex + 1} of {questions.length}</h3>
+        <div className="score-display">Score: {score}</div>
+      </div>
+      
+      <div className="question-card">
+        <h4>{currentQuestion.question}</h4>
+        <div className="answer-input-container">
+          <input
+            type="text"
+            value={userAnswer}
+            onChange={(e) => setUserAnswer(e.target.value)}
+            placeholder="Type your answer here..."
+            autoFocus
+          />
+          {currentQuestion.isNumeric && (
+            <div className="input-hint">(Enter exact number/year)</div>
+          )}
+        </div>
+      </div>
+
+      <button 
+        className="submit-btn"
+        onClick={handleAnswerSubmit}
+        disabled={!userAnswer.trim()}
+      >
+        {currentIndex < questions.length - 1 ? 'Next Question' : 'Finish Test'}
+      </button>
+    </div>
+  );
+};
+
+export default Test;
+
+*/
+
+import React, { useState, useEffect } from 'react';
+
+const Test = ({ data, topics, selectedTopic, pnumber, config, onExit, checkedItems, handleCheckboxChange }) => {
+  const [questions, setQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [userAnswer, setUserAnswer] = useState('');
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+  const [reviewMode, setReviewMode] = useState(false);
+  const [reviewIndex, setReviewIndex] = useState(0);
+
+  useEffect(() => {
+    const generateQuestions = () => {
+      setIsLoading(true);
+      try {
+        let questionPool = [];
+        
+        if(config.type === 'marked') {
+          const topicPages = topics[selectedTopic];
+          questionPool = topicPages.flatMap(page => 
+            data[page].filter(q => checkedItems[selectedTopic]?.[q])
+          );
+        } else {
+          questionPool = config.type === 'page' 
+            ? [...data[pnumber]] 
+            : topics[selectedTopic].flatMap(page => [...data[page]]);
+        }
+
+        const formattedQuestions = shuffleArray(questionPool)
+          .slice(0, config.questionCount)
+          .map(q => {
+            const [question, answer] = q.split('-').map(s => s.trim());
+            return { 
+              original: q, // Store original string for marking
+              question, 
+              answer,
+              isNumeric: !isNaN(answer) || /^\d{4}$/.test(answer)
+            };
+          });
+
+        setQuestions(formattedQuestions);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    generateQuestions();
+  }, []);
+
+  const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
+
+  const checkAnswer = (userAnswer, correctAnswer, isNumeric) => {
+    if (isNumeric) {
+      return userAnswer.trim() === correctAnswer;
+    } else {
+      return calculateSimilarity(userAnswer.toLowerCase(), correctAnswer.toLowerCase()) >= 0.8;
+    }
+  };
+
+  const calculateSimilarity = (str1, str2) => {
+    if (str1 === str2) return 1;
+    if (str1.length === 0 || str2.length === 0) return 0;
+    
+    const longer = str1.length > str2.length ? str1 : str2;
+    const shorter = str1.length > str2.length ? str2 : str1;
+    
+    if (longer.includes(shorter) || shorter.includes(longer)) return 0.9;
+    
+    const matchingChars = [...shorter].filter((c, i) => c === longer[i]).length;
+    return matchingChars / longer.length;
+  };
+
+  const handleAnswerSubmit = () => {
+    const currentQuestion = questions[currentIndex];
+    const isCorrect = checkAnswer(
+      userAnswer, 
+      currentQuestion.answer, 
+      currentQuestion.isNumeric
+    );
+
+    if (isCorrect) {
+      setScore(prev => prev + 1);
+    } else {
+      setWrongAnswers(prev => [...prev, currentQuestion]);
+    }
+
+    const updatedQuestions = [...questions];
+    updatedQuestions[currentIndex] = {
+      ...currentQuestion,
+      userAnswer,
+      isCorrect
+    };
+    setQuestions(updatedQuestions);
+
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+      setUserAnswer('');
+    } else {
+      setShowResult(true);
+    }
+  };
+
+  const restartTest = (wrongOnly = false) => {
+    setCurrentIndex(0);
+    setScore(0);
+    setUserAnswer('');
+    setShowResult(false);
+    setReviewMode(false);
+    setWrongAnswers([]);
+    if(wrongOnly) {
+      setQuestions(shuffleArray(wrongAnswers));
+    }
+  };
+
+  if (isLoading) return (
+    <div className="loading-screen">
+      <h3>Preparing your test...</h3>
+      <div className="spinner"></div>
+    </div>
+  );
+
+  if (showResult) return (
+    <div className="results-screen">
+      <h2>Test Results</h2>
+      <div className="score-card">
+        <p>You scored <span>{score}/{questions.length}</span></p>
+        <p>{Math.round((score/questions.length)*100)}% Correct</p>
+      </div>
+      
+      <div className="result-actions">
+        <button onClick={() => restartTest(true)}>Retry Wrong Answers</button>
+        <button onClick={restartTest}>Try Again</button>
+        <button onClick={() => setReviewMode(true)}>Review Wrong Answers</button>
+        <button onClick={onExit}>Return to Study</button>
+      </div>
+
+      {reviewMode ? (
+        <div className="question-review">
+          <div className="review-navigation">
+            <button onClick={() => setReviewIndex(i => Math.max(0, i-1))}>
+              Previous
+            </button>
+            <span>Question {reviewIndex + 1} of {wrongAnswers.length}</span>
+            <button onClick={() => setReviewIndex(i => Math.min(wrongAnswers.length-1, i+1))}>
+              Next
+            </button>
+          </div>
+          
+          {wrongAnswers[reviewIndex] && (
+            <div className="review-item incorrect">
+              <p><strong>Q{reviewIndex+1}:</strong> {wrongAnswers[reviewIndex].question}</p>
+              <p>Your answer: {wrongAnswers[reviewIndex].userAnswer || "(blank)"}</p>
+              <p>Correct answer: {wrongAnswers[reviewIndex].answer}</p>
+              <div className="mark-item">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={checkedItems[selectedTopic]?.[wrongAnswers[reviewIndex].original] || false}
+                    onChange={() => handleCheckboxChange(wrongAnswers[reviewIndex].original)}
+                  />
+                  Mark for Practice
+                </label>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="question-review">
+          {questions.map((q, i) => (
+            <div key={i} className={`review-item ${q.isCorrect ? 'correct' : 'incorrect'}`}>
+              <p><strong>Q{i+1}:</strong> {q.question}</p>
+              <p>Your answer: {q.userAnswer || "(blank)"}</p>
+              <p>Correct answer: {q.answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 
